@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://b36eckflfap7w"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_0a87b"]
+
+[node name="main" type="Node"]
+script = ExtResource("1_0a87b")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1280.0
+offset_bottom = 960.0
+color = Color(0, 0, 0, 1)
+
+[node name="CurrentSceneNameLabel" type="Label" parent="."]
+z_index = 10
+offset_right = 40.0
+offset_bottom = 23.0

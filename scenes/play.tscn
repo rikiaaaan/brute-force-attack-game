@@ -1,0 +1,613 @@
+[gd_scene load_steps=24 format=3 uid="uid://bj0y3udycawqj"]
+
+[ext_resource type="Script" path="res://scenes/play.gd" id="1_sehdm"]
+[ext_resource type="Texture2D" uid="uid://bvnrgjt4cu1cr" path="res://assets/image/kinko_outer_frame.png" id="2_jtie4"]
+[ext_resource type="Texture2D" uid="uid://h4dtvr1nqr3r" path="res://assets/image/kinko_button_removed_inner.png" id="3_k2or2"]
+[ext_resource type="AudioStream" uid="uid://eik4j5wvihud" path="res://assets/sound/incorrect.mp3" id="3_nnrat"]
+[ext_resource type="Texture2D" uid="uid://b5mgrmw671q8x" path="res://assets/image/so_much_coins.png" id="3_p4bxg"]
+[ext_resource type="AudioStream" uid="uid://b4gjxf24i46fs" path="res://assets/sound/correct.mp3" id="4_kasii"]
+[ext_resource type="AudioStream" uid="uid://blgetwejhmwq8" path="res://assets/sound/back.mp3" id="5_66iyh"]
+[ext_resource type="AudioStream" uid="uid://cnot2a2838waa" path="res://assets/sound/door_slide.mp3" id="5_xfyrn"]
+[ext_resource type="AudioStream" uid="uid://d3okfmeawls4y" path="res://assets/sound/number_input.mp3" id="6_68at2"]
+[ext_resource type="AudioStream" uid="uid://c6b3pgyfmygqm" path="res://assets/music/bgm.mp3" id="10_ca7wr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_laeo8"]
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_j3jc2"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_c4cpv"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_xee23"]
+font_size = 120
+
+[sub_resource type="LabelSettings" id="LabelSettings_t53m8"]
+font_size = 70
+
+[sub_resource type="LabelSettings" id="LabelSettings_ojywg"]
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_x30k1"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_01mtw"]
+font_size = 80
+
+[sub_resource type="Animation" id="Animation_i2u67"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KinkoDoorTexture/PasswordDisplayColor:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.294118)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IncorrectSound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CorrectSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera2D:zoom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("KinkoDoorTexture:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-102, -135)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ResultLayer/Result:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ResultMusic:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_kr6gy"]
+resource_name = "game_ending"
+length = 25.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5.1, 10.5, 16.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.4, 0.4), Vector2(0.4, 0.4), Vector2(0.78, 0.78)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5.1, 10.5, 16.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(200, 0), Vector2(200, 0), Vector2(75, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("KinkoDoorTexture:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 7.1, 8.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-102, -135), Vector2(-102, -135), Vector2(1546, -135)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ResultLayer/Result:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 16.2, 21.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_xfyrn")
+}],
+"times": PackedFloat32Array(7.1)
+}
+tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ResultMusic:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(17.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_3sdjc"]
+resource_name = "password_correct"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KinkoDoorTexture/PasswordDisplayColor:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.2, 0.945098, 0, 0.380392)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CorrectSound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_1gc1a"]
+resource_name = "password_incorrect"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KinkoDoorTexture/PasswordDisplayColor:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 0, 0, 0.380392), Color(0, 0, 0, 0.294118)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IncorrectSound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tgaat"]
+_data = {
+"RESET": SubResource("Animation_i2u67"),
+"game_ending": SubResource("Animation_kr6gy"),
+"password_correct": SubResource("Animation_3sdjc"),
+"password_incorrect": SubResource("Animation_1gc1a")
+}
+
+[node name="play" type="Node"]
+script = ExtResource("1_sehdm")
+
+[node name="KinkoOuterTexture" type="TextureRect" parent="."]
+offset_left = -344.0
+offset_top = -445.0
+offset_right = 2151.0
+offset_bottom = 1380.0
+texture = ExtResource("2_jtie4")
+
+[node name="KinkoInsideBackColor" type="ColorRect" parent="."]
+offset_left = -96.0
+offset_top = -122.0
+offset_right = 1525.0
+offset_bottom = 1055.0
+
+[node name="MoneyIwant" type="TextureRect" parent="KinkoInsideBackColor"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 12.0
+offset_right = 1618.0
+offset_bottom = 1164.0
+texture = ExtResource("3_p4bxg")
+stretch_mode = 1
+
+[node name="KinkoDoorTexture" type="TextureRect" parent="."]
+offset_left = -102.0
+offset_top = -135.0
+offset_right = 1549.97
+offset_bottom = 1069.0
+texture = ExtResource("3_k2or2")
+
+[node name="KinkoButtons" type="GridContainer" parent="KinkoDoorTexture"]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 440.0
+offset_right = 691.0
+offset_bottom = 852.0
+scale = Vector2(1.1, 1.1)
+columns = 3
+
+[node name="Button1" type="Button" parent="KinkoDoorTexture/KinkoButtons"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "1"
+
+[node name="Button2" type="Button" parent="KinkoDoorTexture/KinkoButtons"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "2"
+
+[node name="Button3" type="Button" parent="KinkoDoorTexture/KinkoButtons"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "3"
+
+[node name="Button4" type="Button" parent="KinkoDoorTexture/KinkoButtons"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "4"
+
+[node name="Button5" type="Button" parent="KinkoDoorTexture/KinkoButtons"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "5"
+
+[node name="Button6" type="Button" parent="KinkoDoorTexture/KinkoButtons"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "6"
+
+[node name="Button7" type="Button" parent="KinkoDoorTexture/KinkoButtons"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "7"
+
+[node name="Button8" type="Button" parent="KinkoDoorTexture/KinkoButtons"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "8"
+
+[node name="Button9" type="Button" parent="KinkoDoorTexture/KinkoButtons"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "9"
+
+[node name="BackSpaceButton" type="Button" parent="KinkoDoorTexture/KinkoButtons"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Back"
+
+[node name="Button0" type="Button" parent="KinkoDoorTexture/KinkoButtons"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "0"
+
+[node name="EnterButton" type="Button" parent="KinkoDoorTexture/KinkoButtons"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Enter"
+
+[node name="PasswordDisplayColor" type="ColorRect" parent="KinkoDoorTexture"]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 339.0
+offset_right = 744.0
+offset_bottom = 428.0
+color = Color(0, 0, 0, 0.294118)
+
+[node name="PasswordDisplayLabel" type="Label" parent="KinkoDoorTexture"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 370.0
+offset_top = 338.0
+offset_right = 744.0
+offset_bottom = 428.0
+label_settings = SubResource("LabelSettings_laeo8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeDisplay" type="Control" parent="KinkoDoorTexture"]
+anchors_preset = 0
+offset_left = 810.0
+offset_top = 342.0
+offset_right = 810.0
+offset_bottom = 342.0
+
+[node name="ColorRect" type="ColorRect" parent="KinkoDoorTexture/TimeDisplay"]
+layout_mode = 0
+offset_right = 381.0
+offset_bottom = 61.0
+color = Color(0, 0, 0, 0.368627)
+
+[node name="Label" type="Label" parent="KinkoDoorTexture/TimeDisplay"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "経過時間："
+label_settings = SubResource("LabelSettings_j3jc2")
+
+[node name="TimeElapsedLabel" type="Label" parent="KinkoDoorTexture/TimeDisplay"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 200.0
+offset_right = 360.0
+offset_bottom = 58.0
+text = "--:--:--"
+label_settings = SubResource("LabelSettings_c4cpv")
+
+[node name="ResultLayer" type="CanvasLayer" parent="."]
+
+[node name="Result" type="Control" parent="ResultLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ResultBackColor" type="ColorRect" parent="ResultLayer/Result"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 960.0
+color = Color(0, 0, 0, 0.392157)
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="ResultLayer/Result"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 14.0
+offset_right = 1217.0
+offset_bottom = 179.0
+text = "大金を手に入れた！！"
+label_settings = SubResource("LabelSettings_xee23")
+
+[node name="ElapsedTimeLabel" type="Label" parent="ResultLayer/Result"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 331.0
+offset_right = 525.0
+offset_bottom = 415.0
+text = "今回の経過時間："
+label_settings = SubResource("LabelSettings_t53m8")
+vertical_alignment = 1
+
+[node name="ElapsedTime" type="Label" parent="ResultLayer/Result"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 749.0
+offset_top = 331.0
+offset_right = 1106.0
+offset_bottom = 417.0
+text = "00:00:00.000"
+label_settings = SubResource("LabelSettings_ojywg")
+vertical_alignment = 1
+
+[node name="Detail" type="Label" parent="ResultLayer/Result"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 485.0
+offset_right = 144.0
+offset_bottom = 543.0
+text = "詳細"
+label_settings = SubResource("LabelSettings_x30k1")
+
+[node name="NumberButtonPressedTotalLabel" type="Label" parent="ResultLayer/Result"]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 567.0
+offset_right = 578.0
+offset_bottom = 625.0
+text = "数字のボタンを押した回数："
+label_settings = SubResource("LabelSettings_x30k1")
+
+[node name="EnterButtonPressedTotalLabel" type="Label" parent="ResultLayer/Result"]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 625.0
+offset_right = 578.0
+offset_bottom = 683.0
+text = "決定ボタンを押した回数："
+label_settings = SubResource("LabelSettings_x30k1")
+horizontal_alignment = 2
+
+[node name="BackButtonPressedTotalLabel" type="Label" parent="ResultLayer/Result"]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 683.0
+offset_right = 578.0
+offset_bottom = 741.0
+text = "戻すボタンを押した回数："
+label_settings = SubResource("LabelSettings_x30k1")
+horizontal_alignment = 2
+
+[node name="NumberButtonPressedTotal" type="Label" parent="ResultLayer/Result"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 604.0
+offset_top = 567.0
+offset_right = 767.0
+offset_bottom = 626.0
+text = "0回"
+label_settings = SubResource("LabelSettings_x30k1")
+
+[node name="EnterButtonPressedTotal" type="Label" parent="ResultLayer/Result"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 604.0
+offset_top = 625.0
+offset_right = 767.0
+offset_bottom = 684.0
+text = "0回"
+label_settings = SubResource("LabelSettings_x30k1")
+
+[node name="BackButtonPressedTotal" type="Label" parent="ResultLayer/Result"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 604.0
+offset_top = 683.0
+offset_right = 767.0
+offset_bottom = 742.0
+text = "0回"
+label_settings = SubResource("LabelSettings_x30k1")
+
+[node name="BroIsCheater" type="Label" parent="ResultLayer/Result"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 89.0
+offset_top = 154.0
+offset_right = 1300.0
+offset_bottom = 265.0
+rotation = 0.523598
+text = "この人ズルしました！！！！！！！！"
+label_settings = SubResource("LabelSettings_01mtw")
+
+[node name="BackToTitleButton" type="Button" parent="ResultLayer/Result"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 494.0
+offset_top = 827.0
+offset_right = 792.0
+offset_bottom = 913.0
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "タイトル画面に戻る"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tgaat")
+}
+
+[node name="IncorrectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_nnrat")
+
+[node name="CorrectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kasii")
+
+[node name="BackSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_66iyh")
+
+[node name="NumberInputSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_68at2")
+
+[node name="ResultMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ca7wr")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(640, 480)
+
+[connection signal="pressed" from="KinkoDoorTexture/KinkoButtons/Button1" to="." method="_on_kinko_button_pressed" binds= [1]]
+[connection signal="pressed" from="KinkoDoorTexture/KinkoButtons/Button2" to="." method="_on_kinko_button_pressed" binds= [2]]
+[connection signal="pressed" from="KinkoDoorTexture/KinkoButtons/Button3" to="." method="_on_kinko_button_pressed" binds= [3]]
+[connection signal="pressed" from="KinkoDoorTexture/KinkoButtons/Button4" to="." method="_on_kinko_button_pressed" binds= [4]]
+[connection signal="pressed" from="KinkoDoorTexture/KinkoButtons/Button5" to="." method="_on_kinko_button_pressed" binds= [5]]
+[connection signal="pressed" from="KinkoDoorTexture/KinkoButtons/Button6" to="." method="_on_kinko_button_pressed" binds= [6]]
+[connection signal="pressed" from="KinkoDoorTexture/KinkoButtons/Button7" to="." method="_on_kinko_button_pressed" binds= [7]]
+[connection signal="pressed" from="KinkoDoorTexture/KinkoButtons/Button8" to="." method="_on_kinko_button_pressed" binds= [8]]
+[connection signal="pressed" from="KinkoDoorTexture/KinkoButtons/Button9" to="." method="_on_kinko_button_pressed" binds= [9]]
+[connection signal="pressed" from="KinkoDoorTexture/KinkoButtons/BackSpaceButton" to="." method="_on_kinko_button_pressed" binds= [10]]
+[connection signal="pressed" from="KinkoDoorTexture/KinkoButtons/Button0" to="." method="_on_kinko_button_pressed" binds= [0]]
+[connection signal="pressed" from="KinkoDoorTexture/KinkoButtons/EnterButton" to="." method="_on_kinko_button_pressed" binds= [11]]
+[connection signal="pressed" from="ResultLayer/Result/BackToTitleButton" to="." method="_on_back_to_title_button_pressed"]

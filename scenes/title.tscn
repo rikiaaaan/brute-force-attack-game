@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkc726gsukxy1"]
+
+[ext_resource type="Script" path="res://scenes/title.gd" id="1_dkokn"]
+[ext_resource type="Texture2D" uid="uid://bqbiylwo0bdhk" path="res://assets/image/kinko.png" id="2_7r8p2"]
+[ext_resource type="AudioStream" uid="uid://c6b3pgyfmygqm" path="res://assets/music/bgm.mp3" id="3_s2ngg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bhslu"]
+font_size = 100
+
+[node name="title" type="Node"]
+script = ExtResource("1_dkokn")
+
+[node name="KinkoImage" type="TextureRect" parent="."]
+offset_left = 259.0
+offset_top = 99.0
+offset_right = 968.0
+offset_bottom = 720.0
+texture = ExtResource("2_7r8p2")
+
+[node name="TitleLabel" type="Label" parent="."]
+offset_right = 1280.0
+offset_bottom = 137.0
+text = "ブルートフォース"
+label_settings = SubResource("LabelSettings_bhslu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 100)
+offset_left = 340.0
+offset_top = 687.0
+offset_right = 862.0
+offset_bottom = 787.0
+theme_override_font_sizes/font_size = 50
+text = "開ける(スタート)"
+
+[node name="RuleButton" type="Button" parent="."]
+offset_left = 340.0
+offset_top = 822.0
+offset_right = 862.0
+offset_bottom = 922.0
+theme_override_font_sizes/font_size = 50
+text = "ルール説明"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_s2ngg")
+autoplay = true
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="RuleButton" to="." method="_on_rule_button_pressed"]

@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=3 uid="uid://8fu42un2cd6q"]
+
+[ext_resource type="Script" path="res://scenes/howtoplay.gd" id="1_ip27q"]
+[ext_resource type="Texture2D" uid="uid://bqbiylwo0bdhk" path="res://assets/image/kinko.png" id="2_pbisy"]
+[ext_resource type="Texture2D" uid="uid://b8wonkpe0vt8j" path="res://assets/image/button_layout.png" id="3_k1ox1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kvuox"]
+font_size = 80
+
+[sub_resource type="LabelSettings" id="LabelSettings_ortdv"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_0fwib"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_1qu7k"]
+font_size = 35
+
+[node name="howtoplay" type="Node"]
+script = ExtResource("1_ip27q")
+
+[node name="Ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Ui"]
+modulate = Color(1, 1, 1, 0.247059)
+layout_mode = 0
+offset_left = 48.0
+offset_top = 21.0
+offset_right = 1215.0
+offset_bottom = 884.0
+texture = ExtResource("2_pbisy")
+
+[node name="Label" type="Label" parent="Ui"]
+layout_mode = 0
+offset_left = 244.0
+offset_right = 1076.0
+offset_bottom = 111.0
+text = "「ブルートフォース」の遊び方"
+label_settings = SubResource("LabelSettings_kvuox")
+
+[node name="Label2" type="Label" parent="Ui"]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 132.0
+offset_right = 1086.0
+offset_bottom = 355.0
+text = "ブルートフォースアタック（英: Brute-force attack）とは、暗号解読方法のひとつで、可能な組合せを全て試すやり方。力任せ攻撃、または総当たり攻撃（そうあたりこうげき）とも呼ばれる。                                   (Wikipediaより)"
+label_settings = SubResource("LabelSettings_ortdv")
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="Ui"]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 398.0
+offset_right = 1155.0
+offset_bottom = 456.0
+text = "金庫をブルートフォースアタックで開けて、大金をゲットしよう！！"
+label_settings = SubResource("LabelSettings_0fwib")
+
+[node name="TextureRect2" type="TextureRect" parent="Ui"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 553.0
+offset_right = 254.0
+offset_bottom = 817.0
+texture = ExtResource("3_k1ox1")
+expand_mode = 1
+
+[node name="Label4" type="Label" parent="Ui"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 533.0
+offset_right = 1012.0
+offset_bottom = 839.0
+text = "ボタンの配置は左の通りです。
+数字のボタンをクリックして入力します。
+「Back」のボタンをクリックして入力を１つ戻して、
+「Enter」のボタンをクリックして開錠を試みます。
+
+数字キーやテンキーでの入力には対応していません。"
+label_settings = SubResource("LabelSettings_1qu7k")
+
+[node name="Button" type="Button" parent="Ui"]
+layout_mode = 0
+offset_left = 459.0
+offset_top = 864.0
+offset_right = 831.0
+offset_bottom = 938.0
+theme_override_font_sizes/font_size = 40
+text = "タイトル画面に戻る"
+
+[connection signal="pressed" from="Ui/Button" to="." method="_on_button_pressed"]
